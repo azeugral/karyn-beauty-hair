@@ -56,11 +56,11 @@ $$('.comp').forEach(function(c){
 });
 
 // filtros da galeria
-var bts=$$('.filtros button'),itens=$$('.grade button'),abertos=12,cat='todos';
+var bts=$$('.filtros button'),itens=$$('.grade button'),base=innerWidth<=820?6:12,abertos=base,cat='todos';
 function aplica(){var vis=itens.filter(function(i){return cat==='todos'||i.dataset.cat===cat;});
  itens.forEach(function(i){i.hidden=true;});vis.forEach(function(i,k){i.hidden=k>=abertos;});
  $('.mais').hidden=vis.length<=abertos;}
-bts.forEach(function(b){b.addEventListener('click',function(){bts.forEach(function(x){x.setAttribute('aria-pressed',x===b);});cat=b.dataset.f;abertos=12;aplica();});});
+bts.forEach(function(b){b.addEventListener('click',function(){bts.forEach(function(x){x.setAttribute('aria-pressed',x===b);});cat=b.dataset.f;abertos=base;aplica();});});
 $('.mais button').addEventListener('click',function(){abertos=99;aplica();});aplica();
 
 // galeria aberta
